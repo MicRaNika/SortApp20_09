@@ -1,0 +1,14 @@
+﻿@model SortApp.Models.Company
+@{
+    ViewBag.Title = "Добавление компании";
+}
+<form asp-action="AddCompany" asp-controller="home">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Имя</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-outline-success" />
+    </div>
+</form>

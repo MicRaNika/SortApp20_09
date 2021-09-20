@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SortApp.Models.User>
+@{
+    ViewBag.Title = "Все пользователи";
+}
+<a asp-action="Create">Добавить пользователя</a>
+<a asp-action="AddCompany">Добавить компанию </a>
+<a asp-action="AboutCompany">О компаниях </a>
+
+<table class="table">
+   
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.Name</td>
+    <td>@item.Age</td>
+    <td>@item.Company.Name</td>
+    <td>
+        <a asp-action="EditCompany" asp-controller="Home" asp-route-id="@item.Id">Изменить</a>
+    </td>
+    <td>
+        <a asp-action="DetailsCompany" asp-controller="Home" asp-route-id="@item.Id">Подробнее</a>
+    </td>
+    <td>
+        <a asp-action="Delete" asp-controller="Home" asp-route-id="@item.Id">Удалить</a>
+    </td>
+
+</tr>
+    }
+</table>

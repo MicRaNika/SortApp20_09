@@ -1,0 +1,29 @@
+﻿@model SortApp.Models.Company
+@{
+    ViewBag.Title = "About Company";
+}
+<h2>Компания @Model.Name</h2>
+<div>
+    <dl class="dl-horizontal">
+        <dt>Идентификатор</dt>
+        <dd>@Model.Id</dd>
+
+
+
+    </dl>
+</div>
+<div>
+    <table>
+        <tl>Id for this user</tl>
+        @foreach (User u in Model.Users)
+        {
+            <tr>
+            <td>@u.Id</td>
+            <td>@u.Name</td>
+            <td>@u.Company.Name</td>
+            
+
+           </tr>
+        }
+        </table>
+</div> 

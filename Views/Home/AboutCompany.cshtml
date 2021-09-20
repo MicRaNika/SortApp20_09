@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SortApp.Models.Company>
+@{
+    ViewBag.Title = "AllCompany";
+}
+<a asp-action="Create">Добавить пользователя</a>
+ <a asp-action="AddCompany">Добавить компанию </a>
+<a asp-action="Index">О пользователях </a>
+<table class="table">
+    <tr><td>Компания</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+
+            <!--внимание ссылки берут Id компаний.но отрабатывают как для пользоваталей//не верные ссылки-->
+            <!--реализовать соответствующие методы-->
+            <td>
+                <a asp-action="EditCompany" asp-controller="Home" asp-route-id="@item.Id">Изменить</a>
+            </td>
+            <td>
+                <a asp-action="DetailsCompany" asp-controller="Home" asp-route-id="@item.Id">Подробнее</a>
+            </td>
+            <td>
+                <a asp-action="DeleteCompany" asp-controller="Home" asp-route-id="@item.Id">Удалить</a>
+            </td>
+
+        </tr>
+    }
+</table>
