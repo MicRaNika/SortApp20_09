@@ -90,7 +90,7 @@ namespace SortApp.Controllers
             return View(company);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(Company company)
+        public async Task<IActionResult> EditCompany(Company company)
         {
             var users = db.Users.ToList();
            
@@ -120,7 +120,27 @@ namespace SortApp.Controllers
             }
             return NotFound();
         }
+        [HttpPost]
+        public async Task<IActionResult> DeleteCompany(int? id)
+        {
+            var users = db.Users.ToList();
+            Company company = await db.Companies.Include(p => p.Users).FirstOrDefaultAsync(p => p.Id == id);
+            if (company!=null)
+            { 
+                foreach (User u in users)
+                {
+                    if (u.CompanyId.Equals(id))
+                    {
+                        db.Users.Remove(u);
+                    }
+                }
 
+            db.Companies.Remove(company);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+            return RedirectToAction("AboutCompany");
+        }
 
         //---------------
         [HttpGet]
