@@ -142,7 +142,7 @@ namespace SortApp.Controllers
             return RedirectToAction("AboutCompany");
         }
 
-        //---------------
+        //---------------tttttt
         [HttpGet]
         [ActionName("Delete")]
         public async Task<IActionResult> ConfirmDelete(int? id)
